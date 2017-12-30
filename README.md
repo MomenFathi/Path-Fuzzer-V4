@@ -8,8 +8,8 @@
 
  - Support Host:port or without.
 
-### The Tools is Customized For Known Responses, 
-### You Can Edit and unHashTag the lines you need To Use. 
+### The Tools is Customizable For Known Responses,
+  - You Can Edit and unHashTag the lines you need To Use. 
 
 
 
