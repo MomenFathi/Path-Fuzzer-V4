@@ -7,4 +7,6 @@ Support Non-Default-Ports for Web ex -> 192.0.0.1:5454 or www.site.com:9090
 
 Support Host:port or without.
 
-![Screenshot](screenshot.png?raw=true)
+Works on Linux & Windows 
+
+![Screenshot](screenshot.JPG?raw=true)
