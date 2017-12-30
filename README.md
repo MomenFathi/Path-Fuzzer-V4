@@ -7,6 +7,8 @@
 
  - Support Host:port or without.
 
+## The Tools is Customized For Known Responses, You Can Edit and unHashTag the lines you need To Use. 
+
 ### Works on Linux & Windows 
 
 ![Screenshot](screenshotv4.JPG?raw=true)
