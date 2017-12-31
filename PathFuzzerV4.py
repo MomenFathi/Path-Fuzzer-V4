@@ -183,11 +183,12 @@ def internetconnection():
 def check_ssl(url):
 	try:
 		c = httplib2.Http(disable_ssl_certificate_validation=True)
-		response, content = c.request(str(url), 'GET')
+		response = c.request(str(url), 'GET')
+		#response, content = c.request(str(url), 'GET')
 		#response = c.getresponse()
 		#print(response.status)
 		if response.status == 200:
-			#f = content
+			#f = content   #for certain domain that uses old SSL licenses u need to read the content and verify the response from the content
 			#ff = f.find("SSL-enabled")
 			#if ff == 0:
 			return True
