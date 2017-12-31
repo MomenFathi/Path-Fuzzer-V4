@@ -83,19 +83,12 @@ def fuzz(targetlist,linkslist):
 							var2 = var2
 							pass
 						elif response.status == 302:
-							#print ("\t [#] Checking With SSL  " + host)
-							#connection = httplib.HTTPSConnection(site)
-							#connection.request("HEAD",lin)
-							#response = connection.getresponse()
-							#if response.status == 200:
-							#	var1 = var1 + 1
-							#	print "%s %s" % ( "\n\n---->>>  " + host, "Possible File Found !\n")
-							#	break
-							#else:
-							#connection.close()
-							var2 = var2
-							pass
-						#	print "%s %s" % ("\n>>>" + host, "Possible File Found (302 - Redirect)")
+							var2 = var2 + 1
+							print "%s %s" % ( "\n\n---->>>  " + host, "Possible File Found ! (302 - Redirect) \n")
+							report = open('Result.txt','a')
+							report.write("\nPossible File Response !  :- \n\n")
+							report.write("  "+ str(host) +"\n")
+							report.close()
 						elif response.status == 403:
 							#connection.close()
 							var2 = var2
