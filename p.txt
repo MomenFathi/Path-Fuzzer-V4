@@ -1,3 +1,0 @@
-recordings/misc/W__A__H.php
-vtigercrm/test/logo/as.php
-vtigercrm/Log1php/as.php
