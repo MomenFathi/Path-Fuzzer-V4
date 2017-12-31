@@ -56,7 +56,7 @@ def fuzz(targetlist,linkslist):
 						else:
 							ssl._create_default_https_context = _create_unverified_https_context
 						#host = site + lin
-						host = t + lin
+						host = t +"/"+ lin
 						print ("\t [#] Checking  " + host)
 						h = httplib2.Http(disable_ssl_certificate_validation=True)
 						response, content = h.request(str(host), 'HEAD')
@@ -200,6 +200,7 @@ def check_ssl(url):
 				return False
 			else :
 				return True
+			return True
 		else:
 			return False
 	except socket.error:
