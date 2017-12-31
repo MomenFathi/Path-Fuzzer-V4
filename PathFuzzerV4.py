@@ -56,7 +56,7 @@ def fuzz(targetlist,linkslist):
 						else:
 							ssl._create_default_https_context = _create_unverified_https_context
 						#host = site + lin
-						host = t +"/"+ lin
+						host = t.replace('\r', "/") +"/"+ lin
 						print ("\t [#] Checking  " + host)
 						h = httplib2.Http(disable_ssl_certificate_validation=True)
 						response, content = h.request(str(host), 'HEAD')
@@ -185,14 +185,14 @@ def check_ssl(url):
 		c = httplib2.Http(disable_ssl_certificate_validation=True)
 		response, content = c.request(str(url), 'GET')
 		if response.status == 200:
-			#f = content   #for certain domain that uses old SSL licenses u need to read the content and verify the response from the content
+			#f = content                   #for certain domain that uses old SSL licenses u need to read the content and verify the response from the content
 			#ff = f.find("SSL-enabled")
 			#if ff == 0:
-				#return True
+			#	return True
 			#else:
-				#return False
+			#	return False
 			return True
-		else :
+		else:
 			return False
 	except socket.error:
 		pass
@@ -217,7 +217,7 @@ def site_pors():
 			pass
 		else:
 			print("\n                       Determining Protocol Type <HTTP\HTTPS> \n")
-			if check_ssl(('https://'+t)) == True:
+			if check_ssl(('https://'+t.replace('\r','/'))) == True:
 				t = ('https://'+t)
 			else:
 				t = ('http://'+t)
