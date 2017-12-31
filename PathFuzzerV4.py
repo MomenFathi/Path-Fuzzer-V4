@@ -15,25 +15,23 @@ import requests
 os.system("clear")
 print "\t################################################################"
 print "\t#                                                              #"
-print "\t#                   WEBSITE PATH FUZZER.v2                     #"
-print "\t#           Checking Certain Files for Existence               #"
+print "\t#                   WEB HOST PATH FUZZER.v4                    #"
+print "\t#            Checking Certain Files for Existence              #"
 print "\t#                      In Multi Targets                        #"
 print "\t#                                          By LyJoker \ 2017   #"
 print "\t################################################################\n"
 
-targetlist = str(raw_input(" #~ Enter Targets List Path Formatted as (IP:0.0.0.0 or site:www.site.com) : "))
-linkslist = str(raw_input(" #~ Enter Links List Path Formatted as ( /path/file.php ) : "))
+targetlistt = str(raw_input(" #~ Enter Targets List Path Formatted as (IP:0.0.0.0 or site:www.site.com) : "))
+targetlist = targetlistt.replace('"', '')
+linkslistt = str(raw_input(" #~ Enter Links List Path Formatted as ( /path/file.php ) : "))
+linkslist = linkslistt.replace('"', '')
 
-#targetlist = ('Targets-2.txt') #str(raw_input(" #~ Enter Targets List Path Formatted as (IP:0.0.0.0 or site:www.site.com) : "))
-#linkslist = ('Paths.txt') #str(raw_input(" #~ Enter Links List Path Formatted as ( /path/file.php ) : "))
-
-	
 def fuzz(targetlist,linkslist):
 	try:
 		global var1
 		global var2
 		var1=0 #Targets
-		var2=0 #Shells
+		var2=0 #Files
 	
 		targfile = open(targetlist, "r")
 		targlist = targfile.read()
@@ -67,17 +65,17 @@ def fuzz(targetlist,linkslist):
 						#response = connection.getresponse()
 						if response.status == 200:
 							var2 = var2 + 1
-							print "%s %s" % ( "\n\n---->>>  " + host, "Shell File found!\n")
+							print "%s %s" % ( "\n\n---->>>  " + host, "Success File Found!\n")
 							report = open('Result.txt','a')
-							report.write("\nShell's Found :- \n\n")
+							report.write("\nFile Found :- \n\n")
 							report.write("  "+ str(host) +"\n")
 							report.close()
 							pass
 						elif response.status == 401:
 							var2 = var2 + 1
-							print "%s %s" % ( "\n\n---->>>  " + host, "Possible Shell Found ! \n")
+							print "%s %s" % ( "\n\n---->>>  " + host, "Possible File Found ! \n")
 							report = open('Result.txt','a')
-							report.write("\nPossible Shell File !  :- \n\n")
+							report.write("\nPossible File Response !  :- \n\n")
 							report.write("  "+ str(host) +"\n")
 							report.close()
 						elif response.status == 404:
@@ -91,13 +89,13 @@ def fuzz(targetlist,linkslist):
 							#response = connection.getresponse()
 							#if response.status == 200:
 							#	var1 = var1 + 1
-							#	print "%s %s" % ( "\n\n---->>>  " + host, "Shell File found!\n")
+							#	print "%s %s" % ( "\n\n---->>>  " + host, "Possible File Found !\n")
 							#	break
 							#else:
 							#connection.close()
 							var2 = var2
 							pass
-						#	print "%s %s" % ("\n>>>" + host, "Possible Shell File (302 - Redirect)")
+						#	print "%s %s" % ("\n>>>" + host, "Possible File Found (302 - Redirect)")
 						elif response.status == 403:
 							#connection.close()
 							var2 = var2
@@ -173,7 +171,7 @@ def final_report():
 	global targets
 	global linkss
 	print("\n\n   [$]====== Fuzzing Completed ======[$]\n")
-	print("       ----> " + str(var2) + " Total SHELLS Found")
+	print("       ----> " + str(var2) + " Total Files Found")
 	print("       ----> " + str(var1) + " Total Targets Scanned")
 	print("       Expected Scans is " + str(len(targets)*len(linkss)))
 	print("          Scans Made is  " + str(var1*var2))
@@ -188,18 +186,6 @@ def internetconnection():
 		print ("\n\n Make Sure Internet is Connected .. and Try Again !! ")
 		sys.exit(1)
 
-"""	
-def check_ssl(url):
-	try:
-		req = requests.get(url, verify=True)
-		#print url + ' has a valid SSL certificate!'
-		return True
-	#except requests.exceptions.SSLError:
-		#print url + ' has INVALID SSL certificate!'
-		#return True
-	#except requests.exceptions.ConnectionError:
-		#return False
-"""
 
 def check_ssl(url):
 	try:
