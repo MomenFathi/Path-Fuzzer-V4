@@ -194,20 +194,19 @@ def check_ssl(url):
 		#response = c.getresponse()
 		#print(response.status)
 		if response.status == 200:
-			f = content
-			ff = f.find("SSL-enabled")
-			if ff == 0:
-				return False
-			else :
-				return True
+			#f = content
+			#ff = f.find("SSL-enabled")
+			#if ff == 0:
 			return True
-		else:
+		else :
 			return False
 	except socket.error:
 		pass
 	except ssl.SSLError:
 		pass
 	except httplib2.SSLHandshakeError:
+		pass
+	except httplib2.RelativeURIError:
 		pass
 	except httplib.ResponseNotReady:
 		return True
