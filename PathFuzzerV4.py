@@ -183,8 +183,7 @@ def internetconnection():
 def check_ssl(url):
 	try:
 		c = httplib2.Http(disable_ssl_certificate_validation=True)
-		response = c.request(str(url), 'GET')
-		#response, content = c.request(str(url), 'GET')
+		response, content = c.request(str(url), 'GET')
 		#response = c.getresponse()
 		#print(response.status)
 		if response.status == 200:
