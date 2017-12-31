@@ -203,7 +203,7 @@ def check_ssl(url):
 	except httplib2.RelativeURIError:
 		pass
 	except httplib.ResponseNotReady:
-		return True
+		return False
 		
 
 def site_pors():
