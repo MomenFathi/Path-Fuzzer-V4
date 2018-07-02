@@ -1,5 +1,5 @@
 # Path-Fuzzer-V4
-# Multi Target ( Host, IP, Domain / Path Fuzzer )
+# Multi Target ( Host, IP, Domain, URL / Path Fuzzer )
 ### Works on Linux & Windows 
 
  - Support SSL and Expired SSL Links.
